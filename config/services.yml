@@ -1,0 +1,21 @@
+services:
+    nockiro.gluuauth.controller.acp:
+        class: nockiro\gluuauth\controller\acp_controller
+        arguments:
+            - '@config'
+            - '@language'
+            - '@log'
+            - '@request'
+            - '@template'
+            - '@user'
+    auth.provider.oauth.service.gluu:
+        class: nockiro\gluuauth\oauth\service\gluu
+        arguments:
+            - '@config'
+            - '@request'
+        tags:
+            - { name: auth.provider.oauth.service }
+        
+parameters:
+    # Enable the usage of the super globals (_GET, _POST, _SERVER...)
+    core.disable_super_globals: true            
